@@ -719,9 +719,12 @@ img{max-width:100%;height:auto;display:block}
   70%{opacity:0;transform:scale(var(--ring-scale,1.35))}
   100%{opacity:0;transform:scale(var(--ring-scale,1.35))}
 }
+/* слева в PNG 66px прозрачного поля (8.75% ширины) — на столько же отступаем,
+   чтобы подпись начиналась ровно от края монитора, а не от края картинки */
 .mockup-caption{
   display:flex;flex-direction:column;gap:2px;
   margin-bottom:22px;
+  padding-left:8.75%;
 }
 .caption-label{
   color:var(--text-dim);
