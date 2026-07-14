@@ -162,6 +162,22 @@ if (!reduceMotion && window.matchMedia('(hover: hover)').matches) {
   });
 }
 
+/* ---------- Медиаплан: подсказка о горизонтальной прокрутке ---------- */
+document.querySelectorAll('.table-scroll').forEach(box => {
+  const card = box.closest('.table-card');
+
+  function update() {
+    const overflow = box.scrollWidth - box.clientWidth;
+    card.classList.toggle('scrollable', overflow > 4);
+    card.classList.toggle('at-end', box.scrollLeft >= overflow - 4);
+  }
+
+  box.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  window.addEventListener('load', update);
+  update();
+});
+
 /* ---------- Мобильное меню ---------- */
 const burger = document.getElementById('burger');
 const navLinksBox = document.getElementById('navLinks');
